@@ -1,0 +1,254 @@
+<!--Dynamic Documents-->
+
+<html>
+	
+	<head>
+	
+	<title>Dynamic Documents</title>
+	
+	<style>
+	
+	body{
+	background-color:lightgrey;
+	padding:50px;
+	
+	}
+	
+	
+	h1{
+	background-color:white;
+	padding:50px;
+	border-style:solid;
+	border-width:3px;
+	border-color:black;
+	}
+	
+	h3{
+	background-color:grey;
+	padding:20px;
+	}
+	
+	p{
+	padding:10px;
+	}
+	
+	</style>
+	
+	<script>
+	
+		function sayHi(){
+		//gets the first name
+			var firstnameInput = document.getElementById("firstName");
+			var firstName = firstnameInput.value;
+		//gets the second name
+			var lastNameInput = document.getElementById("lastName");
+			var lastName = lastNameInput.value;
+		//construct greeting message
+			var message = "Hi " + firstName + " " + lastName + "!";
+		//display greeting message
+			var greetingSpan = document.getElementById("greeting");
+			greetingSpan.innerHTML = message;
+		}
+		
+		function answer(){
+			//getting numbers, note that they must also be turned into a string
+			var input1 = document.getElementById("firstNumber");
+			var number1 = Number(input1.value);
+			
+			var input2 = document.getElementById("secondNumber");
+			var number2 = Number(input2.value);
+			
+			var operatorSelect = document.getElementById("operator");
+			var operator = operatorSelect.value;
+			
+			//calculating result
+			var result;
+			
+			if(operator == "add"){
+				result = number1 + number2;
+			}
+			else if(operator == "subtract"){
+				result = number1 - number2;
+			}
+			else if(operator == "multiply"){
+				result = number1 * number2;
+			}
+			
+			//displaying result
+			var resultField = document.getElementById("result");
+			resultField.value = result;
+		}
+		
+		function showImage(img){
+			var image = document.getElementById("display");
+			image.src = img;
+		}
+		
+		function randDice(){
+			//generating a random number 1-6
+			//floor rounds the number to an integer
+			var diceValue = Math.floor(Math.random() * 6) + 1;
+			var imageFile = "dice" + diceValue + ".png";
+			
+			var diceImage = document.getElementById("dice");
+			diceImage.src = imageFile;
+			
+		}
+		
+		function addSubject(){
+			//prompts user for a subject
+			var subject = prompt("Enter the subject code");
+			
+			if(subject != null){
+				//creates a new list item to hold the subject code
+				var li = document.createElement("li");
+				var subjectText = document.createTextNode(subject);
+				li.appendChild(subjectText);
+				
+				//now it adds the item
+				var subjectUL = document.getElementById("subjectList");
+				subjectUL.appendChild(li);
+				
+			}
+			
+		}
+	
+	
+		//preparing for the rolling dice animation
+		var rollDiceSchedule;
+		var rollDiceCounter;
+		var animationBool = false;
+		
+		function rollDice(){
+			//sets the counter to 0
+			rollDiceCounter = 0;
+			//starts the animation if there isnt one currently being displayed
+			if (animationBool == false){
+				rollDiceSchedule = setInterval(rollDiceAnimation, 1000);
+				//the first parameter is the function while the second is the time in ms (here it is in 1s)
+				//setting the boolean to true
+				animationBool = true;
+			}
+		}
+		
+		function rollDiceAnimation(){
+			//generating a random number 1-6
+			//floor rounds the number to an integer
+			var diceValue = Math.floor(Math.random() * 6) + 1;
+			var imageFile = "dice" + diceValue + ".png";
+			
+			var diceImage = document.getElementById("diceAnimation");
+			diceImage.src = imageFile;
+			
+			//increases counter
+			rollDiceCounter ++;
+			
+			//if the counter reaches 10 then the counter will be stoped
+			if(rollDiceCounter == 10){
+				clearInterval(rollDiceSchedule);
+				animationBool = false;
+			}
+		}
+	
+	</script>
+	
+	
+	
+</head>
+
+
+<body>
+
+	<h1>Dynamic Documents</h1>
+	
+	<h3>Table of Contents</h3>
+	
+	<table>
+		<tr>
+			<a href="#form">1 Form Fillouts</a> <br />
+			<a href="#calculator">2 Input Calculator</a> <br />
+			<a href="#parameter">3 Passing Parameters</a> <br />
+			<a href="#dice1">4 Random Dice</a> <br />
+			<a href="#prompts">5 Types of Prompts</a> <br />
+			<a href="#subject">6 Adding Subjects to a list</a> <br />
+			<a href="#dice2">7 Dice Animation</a> <br />
+		</tr>
+	</table>
+	
+			
+	
+	<h3 id="form">Form fillouts</h3>
+	
+	<p>
+	Here we can see a form fillout that will be used to construct a message. <br />
+	First name: <input type="text" id="firstName" /> <br />
+	Last name: <input type="text" id="lastName" /> <br />
+	<button onClick="sayHi();">Say Hi!</button> <br />
+	<span id="greeting"></span>
+	</p>
+	
+	<h3 id="calculator">Input Calculator</h3>
+	
+	<p>
+	Here we can use a form fillout and a drop down to create a simple calculator. <br />
+	<input type="text" id="firstNumber" />
+	<select id="operator">
+		<option value="add">+</option>
+		<option value="subtract">-</option>
+		<option value="multiply">*</option>
+	</select>
+	<input type="text" id="secondNumber" />
+	<button onClick="answer();">=</button>
+	<input type="text" id="result" />
+	</p>
+	
+	<h3 id="parameter">Passing parameteres</h3>
+	
+	<p>
+	Here we demonstrate that functions can be simplifed by passing parameters to them. Here we will demonstrate the same exercise as last week with one function. <br />
+	<button onClick="showImage('https://static.scientificamerican.com/sciam/cache/file/92E141F8-36E4-4331-BB2EE42AC8674DD3_source.jpg');">Cat</button>
+	<button onClick="showImage('https://post.medicalnewstoday.com/wp-content/uploads/sites/3/2020/02/322868_1100-800x825.jpg');">Dog</button>
+	<br/><br/>
+	<img id="display" width="300px" />
+	</p>
+	
+	<h3 id="dice1">Random Dice</h3>
+	
+	<p>
+	Here we will demonstrate the random function, as well as building image files from a string. <br/>
+	<button onClick="randDice();">Roll the dice!</button>
+	<br/>
+	<img id="dice" width="300px"/>
+	</p>
+	
+	<h3 id="prompts">Types of prompts</h3>
+	
+	<p>
+	There are many types of pop ups that the website can display, here is a list of them.<br/> 
+	<button onClick="confirm('Here is an example of confirm');">Confirm</button> <br/>
+	<button onClick="prompt('Here is an example of prompt', 'you can also insert default text');">Prompt</button> <br/>
+	</p>
+	
+	<h3 id="subject">Adding subjects into lists</h3>
+	
+	<p>
+	Demonstration <br/>
+	<button onClick="addSubject();">Click to add a subject</button>
+	<br />
+	<ul id="subjectList">
+	</ul>
+	</p>
+	
+	<h3 id="dice2">Dice Animation</h3>
+	
+	<p>
+	Here we will demonstrate aniamations through the replica of a rolling dice, this will be further explained within the code comments. <br/>
+	<button onClick="rollDice();">Roll the Dice!</button>
+	<br />
+	<img id="diceAnimation" width="300px"/>
+	
+	
+	
+</body>
+
+</html>

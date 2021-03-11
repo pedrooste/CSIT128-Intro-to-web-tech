@@ -1,0 +1,365 @@
+<!--Java Script-->
+
+<html>
+	
+	<head>
+	
+	<title>JavaScript</title>
+	
+	<style>
+	
+	body{
+	background-color:lightgrey;
+	padding:50px;
+	
+	}
+	
+	
+	h1{
+	background-color:white;
+	padding:50px;
+	border-style:solid;
+	border-width:3px;
+	border-color:black;
+	}
+	
+	h3{
+	background-color:grey;
+	padding:20px;
+	}
+	
+	p{
+	padding:10px;
+	}
+	
+	</style>
+	
+	<script>
+	
+	function introFunction(){
+	alert("introFunction was called");
+	}
+	
+	function catText(){
+	var displaySpan = document.getElementById("changeText");
+	displaySpan.innerHTML = "Meow Meow";
+	}
+	
+	function dogText(){
+	var displaySpan = document.getElementById("changeText");
+	displaySpan.innerHTML = "Woof Woof";
+	}
+	
+	function catImage(){
+	var image = document.getElementById("changeImage");
+	image.src = "https://icatcare.org/app/uploads/2018/07/Thinking-of-getting-a-cat.png";
+	}
+	
+	function dogImage(){
+	var image = document.getElementById("changeImage");
+	image.src = "https://www.humanesociety.org/sites/default/files/styles/768x326/public/2020-07/dog-366503.jpg?h=e22bf01e&itok=W45qqZzt";
+	}
+	
+	var catClickCounter=0;
+	var dogClickCounter=0;
+	
+	function catClick(){
+	catClickCounter ++;
+	var spanCat = document.getElementById("catClickCount");
+	spanCat.innerHTML = catClickCounter;
+	}
+	
+	function dogClick(){
+	dogClickCounter ++;
+	var spanDog = document.getElementById("dogClickCount");
+	spanDog.innerHTML = dogClickCounter;
+	}
+	
+	var order = "dogcat";
+	
+	function imageSwitch(){
+		
+		if(order == "catdog"){
+			order = "dogcat";
+			
+			var image1 = document.getElementById("left");
+			var image2 = document.getElementById("right");
+			
+			image2.src = "https://thumbs-prod.si-cdn.com/COt4RVYpNNnDup3bFSpfcyCYFuU=/1072x720/filters:no_upscale()/https://public-media.si-cdn.com/filer/ad/7b/ad7b3860-ad5f-43dc-800e-af57830cd1d3/labrador.jpg";
+			image1.src = "https://ichef.bbci.co.uk/news/1024/cpsprodpb/151AB/production/_111434468_gettyimages-1143489763.jpg";
+		}
+		else{
+			
+			order = "catdog";
+			
+			var image1 = document.getElementById("left");
+			var image2 = document.getElementById("right");
+			
+			image1.src = "https://thumbs-prod.si-cdn.com/COt4RVYpNNnDup3bFSpfcyCYFuU=/1072x720/filters:no_upscale()/https://public-media.si-cdn.com/filer/ad/7b/ad7b3860-ad5f-43dc-800e-af57830cd1d3/labrador.jpg";
+			image2.src = "https://ichef.bbci.co.uk/news/1024/cpsprodpb/151AB/production/_111434468_gettyimages-1143489763.jpg";
+		}
+	}
+	
+	
+	</script>
+	
+	</head>
+	
+	
+	<body>
+		
+		<h1>Lecture 3, JavaScript</h1>
+		
+		<p>
+		Here we will start to learn the very basics of java script.
+		This will be done through some examples.
+		</p>
+	
+		<h3> This is an index that you can look at throught out my page </h1>
+		
+		<table border="1" style="border-style:seperated;text-align:left;">
+			<tr>
+				<th style="padding:10px;">
+					<a href="#Buttons">1 Buttons</a> <br />
+					<a href="#functions">2 Functions</a> <br />
+					<a href="#variable">3 Variables</a> <br />
+					<a href="#divSpan">4 divSpan</a> <br />
+					<a href="#content">5 content</a> <br />
+					<a href="#text">6 text</a> <br />
+					<a href="#images">7 images</a> <br />
+					<a href="#click">8 click</a> <br />
+					<a href="#switch">9 switch</a> <br />
+					<a href="#string">10 string</a> <br />
+					<a href="#date">11 date</a> <br />
+				</th>
+			</tr>
+		</table>
+		
+		
+		<h3 id="Buttons">Buttons</h3>
+		
+		<p>
+		Here are some basic buttons that will alert a pop up
+		</p>
+	
+		<button onClick="alert('Hi');"> <!-- Inline does not have to be within the script statement -->
+			Click me for alert
+		</button>
+		
+		<button onClick="alert(1+1);">
+			Click me for alert
+		</button>
+		
+		<br />
+		<br />
+		
+		<p>
+		These buttons will send an output to the console.
+		You can access this through inspect element.
+		</p>
+		
+		<button onClick="console.log('Hi');">
+			Click me and check the console
+		</button>
+		
+		<button onClick="console.log(2+2);">
+			Click me and check the console
+		</button>
+		
+	</body>
+	
+	<body>
+		
+		<h3 id="functions">JavaScript Functions</h3>
+		
+		<p>
+			We can also use functions, and as you will see this is in a very similar format to java.
+			Note that scripts have to be place between a script tag. This is usually palced within the header tag.
+		</p>
+		
+		<button onClick="introFunction();"> This button will call a function</button>
+		
+		<p>
+		You may also put the JavaScript as an external file, and link it. This can be done as
+		</p>
+		
+		<pre>
+			<code>
+&lt;script type=&quot;text/javascript&quot; src=&quot;js/myscript.js&quot;&gt;&lt;/script&gt;
+			</code>
+		</pre>
+		
+		<p>
+		<b>Here are some quick pointers for javaScript:</b>
+		<br />
+		Statements are seperated by semicolens
+		<br />
+		Comments are created by // or /* and */
+		<br />
+		It is pretty darn similar to Java, for example the for and if statements are exactly the same.
+		</p>
+		
+	</body>
+	
+	<body>
+		
+		<h3 id="variable">Var - JavaScript</h3>
+		
+		<p>
+		JavaScript uses the &quot;var&quot; keyword to declare variables. These do not need to be initialized or a data type stated.
+		This is commonly known as a dynamic type.
+		This aslo means that you can change an int into a random string without having to redifine the variable.
+		<br/>
+		<br />
+		We must take note of this when doing semi arithmatic operations such as +.
+		<br/>
+		For example 2016 + 1 + &quot;Wollongong&quot; Will equal 2017Wollongong.
+		<br />
+		To bypass this you can use the toString(); command.
+		</p>
+		
+		<p>
+		JavaScript also has the boolean data type. This can be dynamically named as a mathamatical statement.
+		<br/>
+		var positive = (x &gt; 0); //true
+		</p>
+		
+	</body>
+	
+	<body>
+	
+		<h3 id="divSpan">Div and Span HTML tags</h3>
+		
+		<p>
+		The &lt;div&gt; tag defines a generic section container
+		</p>
+		
+		<p>
+		The &lt;span&gt; tag defines a generic inline container
+		</p>
+		
+		<p>
+		These come in handy when they have to dynamically change with javaScript.
+		</p>
+	
+	</body>
+	
+	<body>
+		
+		<h3 id="content">Changing Content via javaScript</h3>
+		
+		<p>
+		Step1: Give the HTML element that we want to change an ID
+		<br/>
+		Step2: Use the Funtion
+		<br/>
+		Step3: Change the content of the HTML element
+		<br/>
+		This is usually done via
+		<pre>
+		<code>
+		e.innerHTML = "the new content";			for div and span
+		e.value = "the-new-value";				for text boxes
+		e.src = "new image";					for images
+		</code>
+		</pre>
+		</p>
+		
+	</body>
+	
+	<body>
+	
+		<h3 id="text">Changing Text elements</h3>
+		
+		<button onClick="catText();">Cat</button>
+		<button onClick="dogText();">Dog</button>
+		<br /> <br />
+		<span id="changeText"></span>
+		
+	</body>
+		
+	<body>
+		
+		<h3 id="images">Changing Image Elements</h3>
+		
+		<button onClick="catImage();">Cat</button>
+		<button onClick="dogImage();">Dog</button>
+		<br/><br/>
+		<img id="changeImage" width="300px"/>
+		
+	</body>
+	
+	<body>
+		
+		<h3 id="click">Click Counters</h3>
+		
+		<p>
+		Click the dog or cat!
+		<br/> <br/>
+		Dog click count: <span id="dogClickCount">0</span>
+		<br/><br/>
+		Cat click count: <span id="catClickCount">0</span>
+		</p>
+		
+		<img src="https://thumbs-prod.si-cdn.com/COt4RVYpNNnDup3bFSpfcyCYFuU=/1072x720/filters:no_upscale()/https://public-media.si-cdn.com/filer/ad/7b/ad7b3860-ad5f-43dc-800e-af57830cd1d3/labrador.jpg" width="300px" alt="left" onClick="dogClick();" id="dogClickCount" />
+		<img src="https://ichef.bbci.co.uk/news/1024/cpsprodpb/151AB/production/_111434468_gettyimages-1143489763.jpg" width="300px" alt="right" onClick="catClick();" id="catClickCount" />
+		
+	</body>
+	
+	<body>
+	
+		<h3 id="switch">Switching Images</h3>
+		
+		<p>
+		Click the button too switch the images!
+		<br /> <br />
+		<button onClick="imageSwitch();">Switch!</button>
+		<br/>
+		<img src="https://thumbs-prod.si-cdn.com/COt4RVYpNNnDup3bFSpfcyCYFuU=/1072x720/filters:no_upscale()/https://public-media.si-cdn.com/filer/ad/7b/ad7b3860-ad5f-43dc-800e-af57830cd1d3/labrador.jpg" width="300px" alt="left" onClick="dogClick();" id="left" />
+		<img src="https://ichef.bbci.co.uk/news/1024/cpsprodpb/151AB/production/_111434468_gettyimages-1143489763.jpg" width="300px" alt="right" onClick="catClick();" id="right" />
+		</p>
+		
+	</body>
+	
+	<body>
+	
+		<h3 id="string">String dataType</h3>
+		
+		<p>
+			The string data type does not need to explicitly stated when the varaible is defined. This is assigned automatically when &quot; &quot; are used.
+			<br/><br/>
+			String index starts at 0, multiple methods can be used surround strings.
+			<ul>
+				<li>.length();</li>
+				<li>.toUpperCase();</li>
+				<li>.toLowerCase();</li>
+				<li>.indexOf("content");</li>
+				<li>.includes("content");</li>
+				<li>.slice(a,b);</li>
+			</ul>
+		</p>
+		
+	</body>
+	
+	
+	<body>
+	
+		<h3 id="date">Date DataType</h3>
+		
+		<p>
+			This variable is an object, therefore it must be instantiated. This can be done by:
+			<br/>
+			<pre>
+var d = new Date(); //current date & time
+var d = new Date(millisec);
+var d = new Date(dateString);
+var d = new Date(year, month, day, hour, min, sec, millisec);
+			</pre>
+			</br>
+			There are lots of methods associated with the date object. These are very similar to javascript and can be googled.
+		</p>
+		
+	</body>
+	
+	
+</html>

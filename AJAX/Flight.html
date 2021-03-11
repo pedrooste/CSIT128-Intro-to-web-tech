@@ -1,0 +1,116 @@
+<html>
+
+    <head>
+        <title>Flight Times</title>
+
+        <script>
+            
+            function makeAjaxQuery(){
+                //getting user input
+                var airportTf = document.getElementById("airportInput");
+                var airportICAO = airportTf.value;
+
+                var dayTf = document.getElementById("noDays");
+                var dayCount = dayTf.value;
+
+                //getting the currrent date
+                var now = new Date();
+                var endTime = Math.floor(now.getTime()/1000);
+
+                //getting the beingTime
+                var beginTime = endTime - dayCount * 24 * 60 *60;
+
+                //creates the request
+                var xhttp = new XMLHttpRequest();
+
+                //creates handler
+                xhttp.onreadystatechange = function(){
+                    readyStateChangeHandler(xhttp);
+                };
+
+                //gets URL
+                var URL = "https://opensky-network.org/api/flights/departure" + "?airport=" + airportICAO + "&begin=" + beginTime + "&end=" + endTime;
+
+                //sends request
+                xhttp.open("GET", URL, true);
+                xhttp.send();
+            }
+
+            function readyStateChangeHandler(xhttp){
+                if(xhttp.readyState == 4){               //4 means done
+                    if(xhttp.status == 200){            //200 means okay
+                        //all okay
+                        handleStatusSuccesss(xhttp);
+                    }
+                    else{
+                        //not okay
+                        handleStatusFailure(xhttp);
+                    }
+                }
+                else{
+                    //still loading
+                    handleStateFailure(xhttp);
+                }
+            }
+
+            function handleStatusSuccesss(xhttp){
+
+                //get JSON repsonce
+                var jsonText = xhttp.responseText;
+
+                //translate JSON to Object
+                var flightList = JSON.parse(jsonText);
+
+                //displays on webPage
+                displayObject(flightList);
+            }
+
+            function handleStatusFailure(xhttp){
+                var displayDiv = document.getElementById("display");
+                displayDiv.innerHTML = "AJAX error";
+            }
+
+            function handleStateFailure(xhttp){
+                var displayDiv = document.getElementById("display");
+                displayDiv.innerHTML = "loading......";
+            }
+
+            function displayObject(flightList){
+                //here we will create our HTML to display
+
+                var html = "<h3>There are " + flightList.length + " available</h3>";
+
+                for(var i=0; i<flightList.length; i++){
+                    var flightObj = flightList[i];
+
+                    html += flightObj.callsign + "<br />";
+                }
+
+                var displayDiv = document.getElementById("display");
+                displayDiv.innerHTML = html;
+
+            }
+        
+        </script>
+
+    </head>
+
+
+    <body>
+
+        <h1>Please enter information to find flights</h1>
+        YSSY is a code btw<br/>
+        Enter flight ICAO code:
+        <input type="text" id="airportInput" size="30" /><br />
+
+        Enter Number of days:
+        <input type="text" id="noDays" size="30" /><br />
+
+        <button onClick="makeAjaxQuery();">Get Details</button>
+
+        <div id="display"></div>
+
+    </body>
+
+
+</html>

@@ -1,0 +1,64 @@
+<html>
+
+    <head>
+
+        <script>
+
+            function makeAjaxQuery(){
+                
+
+                //creating request
+                var xhttp = new XMLHttpRequest();
+
+                //creating handler
+                xhttp.onreadystatechange = function(){
+                    readyStateChangeHandler(xhttp);
+                };
+
+                //getting url
+                var URL = "link goes here";
+
+                //sends request
+                xhttp.open("GET", URL, true);
+                xhttp.send();
+
+            }
+
+            function readyStateChangeHandler(xhttp){
+                if(xhttp.readyState == 4){
+                    if(xhttp.status == 200){
+                        //all okay
+                        handleStatusSuccess(xhttp);
+                    }
+                    else{
+                        //not okay
+                        handleStatusFailure(xhttp);
+                    }
+                }
+                else{
+                    //still loading
+                    handleStateFailure(xhttp);
+                }
+            }
+
+            function handleStatusSuccess(xhttp){
+                //handles status success
+                alert("Success");
+            }
+
+            function handleStateFailure(xhttp){
+                //handles status failure
+                alert("AJAX error");
+            }
+
+        </script>
+
+    </head>
+
+    <body>
+
+        <button onClick="makeAjaxQuery();">Make AJAX Query</button>
+
+    </body>
+
+</html>

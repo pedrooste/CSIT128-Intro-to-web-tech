@@ -1,0 +1,171 @@
+<html>
+    <head>
+        <title>Canvas</title>
+        
+        <script>
+            //hello world canvas
+            function drawFont(){
+                //gets the canvas 2d context
+                var canvas = document.getElementById("fontCanvas");
+                var context = canvas.getContext("2d");
+
+                //fill text
+                context.font = "italic small-caps bold 50px Arial";
+                context.fillText("Hello World", 100, 100);
+
+                //stroke text
+                context.font = "oblique 100px Courier New";
+                context.strokeText("Hello World", 250, 300);
+            }
+
+            function clearCanvas(id){
+                //gets the canvas 2d context
+                var canvas = document.getElementById(id);
+                var context = canvas.getContext("2d");
+
+                //clearing canvas
+                context.clearRect(0,0, canvas.width, canvas.height);
+            }
+
+            function drawTriangle(){
+                //gets the canvas 2d context
+                var canvas = document.getElementById("triangleCanvas");
+                var context = canvas.getContext("2d");
+
+                //gets coordinates
+                var x1 = document.getElementById("x1").value;
+                var y1 = document.getElementById("y1").value;
+                
+                var x2 = document.getElementById("x2").value;
+                var y2 = document.getElementById("y2").value;
+
+                var x3 = document.getElementById("x3").value;
+                var y3 = document.getElementById("y3").value;
+
+                //drawing point
+                context.beginPath();
+                context.moveTo(x1,y1);
+                context.lineTo(x2,y2);
+                context.lineTo(x3,y3);
+                context.closePath();
+
+                //make the stroke
+                context.strokeStyle = "#db03fc";
+                context.lineWidth = "5px";
+                context.stroke();
+
+                //filling the triangle
+                context.fillSytle="black";
+                context.fill();
+            }
+
+            function dragStart(event){
+                //find out drag id
+                var dragId = event.target.id;
+
+                //store the dragged element ID into the data transfer object
+                event.dataTransfer.setData("dragId", dragId);
+            }
+
+            function drop(event){
+                //get dropped element id
+                var dropId = event.target.id;
+
+                //retrive the dragged element ID from the dataTransfer object
+                var dragId = event.dataTransfer.getData("dragId");
+
+                //display message
+                var messageSpan = document.getElementById("dragMessage");
+                messageSpan.innerHTML = dragId + " " + dropId;
+
+            }
+
+            function dragOver(event){
+                //if drop is not allowed at that location
+                event.preventDefault();
+            }
+
+        </script>
+
+        <style>
+
+            .orangeWord{
+                color:orange;
+                font-size: 50px;
+            }
+
+            .redWord{
+                color:red;
+                font-size: 50px;
+            }
+
+        </style>
+
+    </head>
+
+    <body>
+        <h1>Canvas in HTML4</h1>
+
+        <p>
+            Canvas was first introduced in WebKit by apple for the OS X dashboard, however it is now
+            implemented within most browsers. This can be used to draw graphics, paths, boxes, text and images 
+            all via JavaScript.
+        </p>
+
+
+        <h3>Displaying Fonts</h3>
+
+        <canvas id="fontCanvas" width="1000" height="500" style="border:1px solid black;">Your browser does not support canvas</canvas>
+        <br/>
+        <button onClick="drawFont();">Draw Hello World</button>
+        <button onClick="clearCanvas('fontCanvas');">Clear</button>
+        <br/><br/>
+
+        <h3>Drawing triangles via user coordinates</h3>
+        <canvas id="triangleCanvas" width="1000" height="500" style="border:1px solid black;">Your browser does not support canvas</canvas>
+        <br/>
+        <table>
+            <tr>
+                <td>Enter first coordinates:</td>
+                <td><input type="text" size="3px" id="x1"/></td>
+                <td><input type="text" size="3px" id="y1"/></td>
+            </tr>
+            <tr>
+                <td>Enter second coordinates:</td>
+                <td><input type="text" size="3px" id="x2"/></td>
+                <td><input type="text" size="3px" id="y2"/></td>
+            </tr>
+            <tr>
+                <td>Enter third coordinates:</td>
+                <td><input type="text" size="3px" id="x3"/></td>
+                <td><input type="text" size="3px" id="y3"/></td>
+            </tr>
+        </table>
+        <br/>
+        <button onClick="drawTriangle();">Draw Traingle</button>
+        <button onClick="clearCanvas('triangleCanvas');">Clear Canvas</button>
+        <br/><br/>
+
+        <h3>Drag and Drop</h3>
+        <p>Here you can take an Orange word and Drop it on a orange word to make a scentence</p>
+        <span class="orangeWord" draggable="true" onDragStart="dragStart(event);" id="Tasty">Tasty</span> &nbsp;&nbsp;&nbsp;
+        <span class="orangeWord" draggable="true" onDragStart="dragStart(event);" id="Crazy">Crazy</span> &nbsp;&nbsp;&nbsp;
+        <span class="orangeWord" draggable="true" onDragStart="dragStart(event);" id="Sexy">Beautiful</span> &nbsp;&nbsp;&nbsp;
+        <span class="orangeWord" draggable="true" onDragStart="dragStart(event);" id="Huge">Huge</span> &nbsp;&nbsp;&nbsp;
+        <br/><br/>
+        <span class="redWord" onDrop="drop(event)" onDragOver="dragOver(event)" id="Frog">Frog</span> &nbsp;&nbsp;&nbsp;
+        <span class="redWord" onDrop="drop(event)" onDragOver="dragOver(event)" id="Fox">Fox</span> &nbsp;&nbsp;&nbsp;
+        <span class="redWord" onDrop="drop(event)" onDragOver="dragOver(event)" id="Duck">Duck</span> &nbsp;&nbsp;&nbsp;
+        <span class="redWord" onDrop="drop(event)" onDragOver="dragOver(event)" id="Dog">Dog</span> &nbsp;&nbsp;&nbsp;
+        <br/><br/>
+        <span id="dragMessage"></span>
+        <br/><br/>
+
+        <h3>Refernces</h3>
+        <p>
+            https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial<br/>
+            https://www.w3schools.com/html/html5_canvas.asp<br/>
+
+        </p>
+    </body>
+</html>

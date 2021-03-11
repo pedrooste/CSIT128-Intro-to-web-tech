@@ -1,0 +1,248 @@
+<!--
+This is the introduction to html, commen strucutres will be shown and commented throughout
+-->
+
+<html> <!-- this is commonly known as a tag. These are not case sensitive, all tags must be closed with a </...> -->
+
+	<head>  <!-- HTML documents are made up of elements, this is everything placed between two tags -->
+		
+		<title>Pedros HTML Notes</title> <!-- This is displayed in the tab name -->
+		
+	</head>
+	
+	<body>
+	
+		<h1> Welcome to my page </h1>
+	
+		<h3> This is an index that you can look at throught out my page </h3>
+		
+		<table border="1">
+			<tr>
+				<th>
+					<a href="#Headings">1 Headings</a> <br />
+					<a href="#Lists">2 Lists</a> <br />
+					<a href="#Text Formating">3 Text Formating</a> <br />
+					<a href="#Table Formating">4 Table Formating</a> <br />
+					<a href="#Text Structuring">5 Text Structuring</a> <br />
+					<a href="#Images">6 Images</a> <br />
+					<a href="#Links">7 Links</a> <br />
+					<a href="#Extra">8 Extra information</a> <br />
+				</th>
+			</tr>
+		</table>
+					
+	
+		<h3 id="Headings"> This a Heading</h3>
+		
+		Headings range from 1 to 6. With 1 being the most important
+		<br />  <!-- This is also known as a self-closing tag -->
+		This will indicate a line break.
+		<hr />
+		This indicates a horizontal line.
+		
+		<br /> <br />
+		<h3 id="Lists">We will now create a unordered list</h3>
+		<ul> <!-- Unordered list -->
+			<li> Good Times: All day everyday </li> <!-- List Item -->
+			<li> Beers: Fridays and weekends </li>
+			<li> Study: During weekdays </li>
+		</ul>
+		
+		<br /> <br />
+		<h3>Here is a ordered list notified by numbers</h3>
+		<ol> <!-- Ordered List -->
+			<li> Good Times: All day everyday </li> <!-- List Item -->
+			<li> Beers: Fridays and weekends </li>
+			<li> Study: During weekdays </li>
+		</ol>
+		
+		<br /> <br />
+		<h3>Here is a Description list notified by indentations</h3>
+		<dl> <!-- Description List -->
+			<dt>  Good Times</dt>					<!--Description term -->
+				<dd>All day everyday </dd>	<!-- Description Definition -->
+			
+			<dt> Beers</dt>
+				<dd>Fridays and weekends </dd>
+				
+			<dt> Study </dt>
+				<dd>During weekdays </dd>
+		</dl>
+		
+		<br /> <br />
+		<h3 id="Text Formating">Basic  Text formating </h3>
+		
+		<i>italic text</i> <br />
+		<b>bold text</b> <br />
+		<mark>highlighted text</mark> <br />
+		<del>deleted text</del> <br />
+		<ins>inserted text</ins> <br />
+		HTML <small> Small </small> Formatting <br />
+		
+		<br /> <br />
+		
+		<h3> Font sizing </h3>
+		
+		<font size="1"> Font size can range from 1</font> <br /> <!-- Note that size and colour are attributes of the tag 'font' -->
+		<font size="7"> To the largest font,</font> <br />
+		<font size="3" color="blue">The defualt font size is three, Colours can also be changed but note that it is the american spelling</font> <br />
+		
+		<br /> <br />
+		
+		<h3>Extened Text formating </h3>
+		
+		Here we can use some math terms <br />
+		x<sub>1</sub><sup>n</sup> + <!-- Note that these are a pain to write -->
+		x<sub>2</sub><sup>n</sup> =
+		y<sub>1</sub><sup>n</sup> +
+		y<sub>2</sub><sup>n</sup>
+		
+		<br /> <br />
+		
+		<h3 id="Table Formating"> Table formating </h3>
+		
+		<table border="1"> <!-- turning to 0 will result in no border -->
+			<tr>					<!-- Table row -->
+				<th>Username</th>	<!-- Table header -->
+				<th>First Name</th>
+				<th>Last Name</th>
+			</tr>
+			
+			<tr>
+				<td>VapeBoi</td><!-- Table Data-->
+				<td>Isaac</td>
+				<td>Pines</td>
+			</tr>
+			
+			<tr>
+				<td>EnginBoi</td>
+				<td>Joshua</td>
+				<td>Bowler</td>
+			</tr>
+		</table>
+			
+		<br /> <br />
+			
+		<table border="1" width="50%">			<!--Note that this can also be done using pixels "px"-->
+		<caption> Here is how you spice it up </caption>
+		<tr>
+			<th width="20%">Username</th>
+			<th width="40%">First Name</th>
+			<th width="40%">Last Name</th>
+		</tr>
+		
+		<tr>
+			<td align="center">VapeBoi</td>	<!--Verticle allignement can also be done using 'valign'-->
+			<td align="right">Isaac</td>
+			<td align="right">Pines</td>
+		</tr>
+
+		<tr>
+			<td align="center">EnginBoi</td>
+			<td align="right">Joshua</td>
+			<td align="right">Bowler</td>
+		</tr>
+		
+		</table>
+		
+		<br /> <br />
+		<table border="1" width="40%">
+			<caption> Columns and rows can also be expanded</caption>
+			 <tr>
+				<td colspan="2">STUDENT DETAILS</td> <!-- Columns and rows can also be expanded-->
+			 </tr>
+			 <tr>
+				<td width="30%">STUDENT NAME</td>
+				<td rowspan="2">John Lee<br /> 1234567</td>
+			 </tr>
+			 <tr>
+				<td>STUDENT NUMBER</td>
+			 </tr>
+				<tr>
+				<td>UOW EMAIL</td>
+				<td>jlee@uowmail.edu.au</td>
+			 </tr>
+		</table>
+		
+		<br /> <br />
+		
+		<h3 id="Text Structuring">Text Strucutring</h3>
+		
+		<p> 
+			This is a paragraph.
+			but note that lines in code will not be displayed on screen. you must do this by using the br statment
+		</p>
+		
+		<p>
+			Note that there are special characters that cannot be normally typed due to mix ups in code.
+			<br />
+			some examples are &nbsp; (extra spaces) , &lt; and &gt;
+		</p>
+		
+		<p>
+			This is how you can blockQuote
+			<blockquote>
+				&quot;then the thy lord brought burgers to the planet&quot;
+			</blockquote>
+		</p>
+		
+		<pre> <!--Preformatted text -->
+		Using preformated text enables the element to be shown in monospace, keeping the structure and line spacing
+		Mary
+			had a
+				little
+					lamb
+		</pre>
+		
+		<pre>
+		You can also use this to write code
+		<code>
+		a = 0;
+		b = 3;
+		c = 2;
+		sum = a + b + c;
+		</code>
+		</pre>
+		
+		<br /> <br />
+		<h3 id="Images"> Images, the beers section </h3>
+		
+		Here we shall view some nice pictures <br />
+		<!-- src stands for source, alt is when the picutre cannot be displayed. -->
+		<img src="https://253qv1sx4ey389p9wtpp9sj0-wpengine.netdna-ssl.com/wp-content/uploads/2020/05/GettyImages-1044350714.jpg" width="320px" alt="Two delicious beers" /> <br />
+		these can be inserted from the internet or from your local storage (which is more efficient) <br />
+		<img src="beerImage.jpg" width="50%" alt="A nice beer being poured" /> <br />
+		Absolute URL comes from a website <br />
+		Relative URL comes from your local storage <br />
+		
+		<br /> <br />
+		
+		<h3 id="Links"> Links, links to beer </h3>
+		<!--href is the website location, target blank opens new tab, while self stays on same page. Here is also how you create a clickable image-->
+		<a href="https://www.greatnorthern.com.au/" target="_blank"> best site in the world </a>
+		<br />
+		
+		<a href="https://www.nohomers.net/content/weblinks/" target="_self">
+		<img src="simpsons.jpg" width="50%" alt="Simpsons image" /> <br />
+		</a>
+		Note that you can also link other relative html pages which is nice
+
+		<br /> <br />
+		
+		<h3  id="Extra"> Extra HTML Information </h3>
+		index.html is the defualt page for a directory. This is better in terms of security as it stops people from knowing the layout of your site,
+		thus gainging access to parts that they wouldnt normally access.
+		
+		<br />
+		
+		XHTML is a stricter version of html, all tags are case sensitive and must be closed before another 
+		
+		<br />
+		
+		HTML5 is the version 5 of HTML which introduces new tags such as video, canvas etc. Also introduces new APIs.
+		
+		<h4> Well thanks for visiting ! </h4>
+			
+	</body>
+	
+</html>

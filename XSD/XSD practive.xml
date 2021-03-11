@@ -1,0 +1,38 @@
+<?xml version="1.0" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	
+	<xsd:element name="dailyTransaction">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="person" minOccurs="0" maxOccurs="unbounded">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element name="firstName" type="xsd:string"/>
+							<xsd:element name="lastName" type="xsd:string"/>
+							<xsd:element name="mobile" type="xsd:string"/>
+						</xsd:sequence>	
+						<xsd:attribute name="staffDbId" type="xsd:string" />
+						<xsd:attribute name="operation" type="xsd:string" />						
+					</xsd:complexType>
+				</xsd:element>
+			</xsd:sequence>
+			<xsd:attribute name="date" type="xsd:string" />
+		</xsd:complexType>
+	</xsd:element>
+</xsd:schema>
+
+<!-- here is the xml, this can be checked within a validator -->
+
+<?xml version="1.0" ?>
+<dailyTransaction date="24/02/2015">
+ <person staffDbId="103" operation="update">
+ <firstName>John</firstName>
+ <lastName>Smith</lastName>
+ <mobile>0211223344</mobile>
+ </person>
+ <person staffDbId="-1" operation="add">
+ <firstName>Mary</firstName>
+ <lastName>Jane</lastName>
+ <mobile>0244556677</mobile>
+ </person>
+</dailyTransaction>

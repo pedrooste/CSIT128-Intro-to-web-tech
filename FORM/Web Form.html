@@ -1,0 +1,194 @@
+<!-- Here we will learn about the form element within html -->
+
+<html>
+
+	<head>
+	
+		<title>Web Form</title>
+		
+		<style>
+		
+		body{
+		background-color:lightgrey;
+		padding:50px;
+		
+		}
+		
+		
+		h1{
+		background-color:white;
+		padding:50px;
+		border-style:solid;
+		border-width:3px;
+		border-color:black;
+		}
+		
+		h3{
+		background-color:grey;
+		padding:20px;
+		}
+		
+		p{
+		}
+		
+		table{
+		border-collapse:collapse;
+		border-width:2px;
+		border-color:black;
+		}
+		
+		tr{
+		border-collapse:collapse;
+		border-width:2px;
+		border-color:black;
+		}
+		
+		
+		</style>
+		
+	</head>
+	
+	
+	<body>
+	
+	<h1> Web Form </h1>
+	
+	<h3> Introduction </h3>
+	
+	<p>
+		HTML forms are used to collect user input,
+		once a submit button is clicked the input will be sent over the the server "back-end" to process
+	<br/>
+	There are many types of form elements including the following types:
+	<ul>
+		<li>checkbox</li>
+		<li>text</li>
+		<li>password</li>
+		<li>radio</li>
+		<li>select <i>(which falls under its own syntax)</i> </li>
+		<li>textarea <i>('')</i></li>
+		<li>submit</li>
+		<li>reset</li>
+	</ul>
+	Within theses types there are other options that you must set, these will be discussed below.
+	</p>
+	
+	<h3>Form</h3>
+	
+	<p>
+	All form elements must be placed within the form tags. <br />
+	The 'action' attribute can then be set to the program within the server that will process that particular form. <br />
+	The 'method' attribute can also be set, this will be explained later.
+	</p>
+	
+	<h3>Name</h3>
+	
+	<p>
+	Each parameter passed to the server back-end must be discussed within the team so that they match up. <br/>
+	The name of the parameter can be set with the "name" option within the input type. This will be demonstrated by URL link.<br/>
+	For example this webpage will submit a URL like this when filled out.<br/>
+	<img src="formexample.png" alt="website example" width="300px" /> <br/><br/>
+	URL: http://library.whosville/bsearch?author=tonien&year=2000&sub=cs&sub=phy <br/>
+	</p>
+	
+	<h3>Value</h3>
+	
+	<p>
+	The value parameter is the value that is sent as a parameter within the html link.
+	While this is not usefull with searchbars, checkboxs/radio/etc can have a shortend value that is sent over.
+	This must also match the backend.
+	</p>
+	
+	<h3>Method</h3>
+	
+	<p>
+	The method attribute can either be set to <i>"get"</i> or <i>"post"</i><br/><br/>
+	
+	<table border="1">
+		<tr>
+			<th/>
+			<th>method="get"</th>
+			<th>method="post"</th>
+		</tr>
+		
+		<tr>
+			<td>Visibility</td>
+			<td>Data is visibile in the URL</td>
+			<td>Data is not displayed within the URL</td>
+		</tr>
+		
+		<tr>
+			<td>History</td>
+			<td>Saved in browser History</td>
+			<td>Not saved and cannot be bookmarked. 
+			<br />This also means that the user will have to re-enter their information</td>
+		</tr>
+		
+		<tr>
+			<td>Restrictions</td>
+			<td>URL is limited to a maximum length, therefore you cannot breach that in the parameteres.
+			<br /> Only ASCII Characters are allowed
+			</td>
+			<td> No restrictions</td>
+		</tr>
+	
+	</table>
+	
+	<h3>Form Example</h3>
+		
+	<form method="get">
+	<!--Text Box-->
+	Username:<br/>
+	<input type="text" name="username" size="30" /><br/>
+	Password:<br/>
+	<input type="password" name="password" size="30" /><br/>
+	
+	<!--Radio Buttons-->
+	Select student type:<br/>
+	<input type="radio" name="studentType" value="u"/>Undergraduate
+	<input type="radio" name="studentType" value="p"/>Postgraduate
+	<input type="radio" name="studentType" value="other" checked="checked"/>Other
+	<br/>
+	
+	<!--Check Box-->
+	<input type="checkbox" name="subscription" value="e"/>eJournal <br/>
+	<input type="checkbox" name="subscription" value="paper" />Hard Copy <br/>
+	<input type="checkbox" name="subscription" value="o" />other <br/>
+	<br/>
+	
+	<!--Drop Down menu-->
+	Please select your prefered day: <br/>
+	<select name="day">
+		<option value="mon">Monday</option>
+		<option value="tue">Tuesday</option>
+		<option value="wed">Wednesday</option>
+		<option value="thu">Thursday</option>
+		<option value="fri">Friday</option>
+	</select>
+		
+	
+	<br/><br/>
+	<input type="submit" value="Login"/>
+	<input type="reset" value="Reset Form"/>
+	<br/><br/>
+	Note that this form will not submit anything as there is not a backend.
+	</body>
+	
+</html>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

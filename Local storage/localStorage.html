@@ -1,0 +1,154 @@
+<html>
+
+    <head>
+
+        <title>Local Storage</title>
+
+        <script>
+            var toDoList = [];
+
+            function initApp(){
+                //checking if local storage is supported by the browser
+                if (typeof(Storage) !== "undefined"){
+                    //gets the to do list from local storage
+                    var toDoListJSON = localStorage.getItem("toDoListJSON");
+                    //parses JSON into object
+                    if(toDoListJSON != null){
+                        toDoList = JSON.parse(toDoListJSON);
+                    }
+                   
+                    //displays object
+                    showToDoList();
+                }
+                else{
+                    console.log("Web Storage is not Supported");
+                }
+            }
+
+            function addTask(){
+                //adds a task to the json
+
+                //gets input from the user
+                var toDoObj = {};
+                toDoObj.task = document.getElementById("taskInput").value;
+                toDoObj.urgency = document.getElementById("urgencyInput").value;
+
+
+                //adds obj to the ToDoList
+                toDoList.push(toDoObj);
+
+                //if web storage is supported it will then update the JSON
+                if (typeof(Storage) !== "undefined"){
+                    localStorage.setItem("toDoListJSON", JSON.stringify(toDoList));
+                }
+
+                //display the task
+                showToDoList();
+            }
+
+            function deleteTask(task){
+                //search for the task through the list
+                for (var i = 0; i < toDoList.length; i++){
+                    if(toDoList[i].task = task){
+                        toDoList.splice(i,1);
+                        break;
+                    }
+                }
+
+                //now update the local storage if supported
+                if (typeof(Storage) !== "undefined"){
+                    localStorage.setItem("toDoListJSON", JSON.stringify(toDoList));
+                }
+
+                //now show tasks
+                showToDoList();
+            }
+
+            function showToDoList(){
+                var html = "";
+
+                //generating html
+                for (var i=0; i<toDoList.length; i++){
+                    //generating inner message
+                    var message = "Task: " + toDoList[i].task + ", Urgency: " + toDoList[i].urgency ;
+                    if (toDoList[i].urgency == "High"){
+                        html += "<font style='color:red'>" + message + "</font>";
+                    }
+                    else if (toDoList[i].urgency == "Medium"){
+                        html += "<font style='color:yellow'>" + message + "</font>";
+                    }
+                    else if (toDoList[i].urgency == "Low"){
+                        html += "<font style='color:green'>" + message + "</font>";
+                    }
+
+                    html += "   <img src='https://helpdeskgeek.com/wp-content/pictures/2019/08/delete-1024x682.png' height='20px' onClick='deleteTask(\"" + toDoList[i].task + "\")'/><br/><br/>";
+                
+                
+                }
+
+                document.getElementById("taskDisplay").innerHTML = html;
+            }
+
+        </script>
+
+        <style>
+            body{
+            background-color:lightgrey;
+            padding:50px;
+            
+            }
+            
+            
+            h1{
+            background-color:white;
+            padding:50px;
+            border-style:solid;
+            border-width:3px;
+            border-color:black;
+            }
+            
+            h3{
+            background-color:grey;
+            padding:20px;
+            }
+            
+            p{
+            padding:10px;
+            }
+        </style>
+
+    </head>
+
+    <body onLoad="initApp();">
+        <h1>Local Storage</h1>
+
+
+        <p>
+           There are two types of client side web storage, where session storage is cleared at the end of the session.
+           This is stored as per origin (protocol + domain + port), as a simple management system via key/value pair.
+           <br />
+           <b>Local Storage:</b> A single persistent object which stores data with no
+           expiration date, this has to be cleared manually.
+           <br />
+           <b>Session Storage:</b> Stores data for one session only, data is cleared when
+           the browser tab is closed.
+        </p>
+
+        <h3>
+            To Do List
+        </h3>
+
+        Task: 
+        <input type="text" id="taskInput" />
+        Urgency: 
+        <select id="urgencyInput">
+            <option value="High">High</option>
+            <option value="Medium">Medium</option>
+            <option value="Low">Low</option>
+        </select>
+        <button onClick="addTask();">Add</button>
+        <br/><br/>
+        <div id="taskDisplay"></div>
+
+    </body>
+</html>

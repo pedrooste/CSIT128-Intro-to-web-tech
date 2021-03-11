@@ -1,0 +1,195 @@
+<!--
+here we will look at document css
+-->
+
+<html>
+	<head>
+		<title>
+			Document CSS
+		</title>
+		
+		<style>
+		body{   								/* Simple Selector */
+		background-color:lightgrey;
+		}
+		
+		h1, h2, h3{  /* notice we can put in multiple */
+		color:red;
+		border:5px solid black;
+		padding:10px;
+		}
+		
+		p{
+		padding:10px;
+		font-size:150%;
+		font-family:Comic Sans MS;
+		}
+		
+		p.main{								/* Class Selector */
+		padding:10px;
+		font-size:100%;
+		}
+		
+		h1.main{
+		color:blue;
+		border:10px solid blue;
+		padding:10px;
+		}
+		
+		.main{
+		font-family:Trebuchet MS;
+		}
+		
+		#heading{						/* ID selector */
+		color: orange;
+		padding: 50px;
+		}
+		
+		#paragraph{
+		background: black;
+		color: white;
+		}
+											/* Contextual selector */
+		div.contSel1 i{
+		color:red;
+		}
+		
+		div.contSel2 > i{
+		color:red;
+		}
+		
+										/* Psuedo class */
+		:hover.psuedo{
+		color:yellow;
+		}
+		
+												/*List properties*/
+		ol {
+		list-style-type:decimal;
+		}
+		ol ol {
+		list-style-type:upper-roman;
+		}
+		
+
+		
+		
+		</style>
+		
+	</head>
+	
+	<body>
+		
+		<h1> Simple Selectors </h1>
+		
+		<p>
+		Here we can see that nothing is within the html tag, it is all defined at the top within the style tab. This makes a code a bit neater.
+		<br />
+		The code however will still use the inline styling over the document. Same goes with the external.
+		<br />
+		This has been styled using simple selectors, as there is no class or IDS 
+		</p>
+		
+		<h1 class="main"> Class Selectors </h1>
+		
+		<p class="main">
+		Here we use a class selector. These are defined within the style tag however they have a class, in order to access them you need to specify your class.
+		<br />
+		</p>
+		
+		<h1 id="Heading"> ID Selector </h1>
+		
+		<p id="paragraph">
+		you can also use ids in order to style, but i dont really see the point
+		</p>
+		
+		<h1> Contextual Selectors </h1>
+		
+		<p class="main">
+		Here is where it gets a little tricky, however the powerpoint does an excellent job at explaining it. <br />
+		you basically have two differnt options, decendants and ansestors. <br />
+		Decendents are all elements within a html tag, while children are only within the same html tag <br />
+		To further explain a child, you could have div and then p within. all decendents of p are not children of div. <br />
+		Here is a great way to see the differences between each. copied from lecture.
+		</p>
+		
+		<div class="contSel1">
+			Some text <i>italic</i> here.
+			
+			<p>
+				Hi there <i>italic again</i>
+			</p>
+			
+			<div class="contSel1">
+				This is the final <i>italic</i>.
+			</div>
+		</div>
+		
+		<hr / >
+		
+		<div class="contSel2">
+			Some text <i>italic</i> here.
+			
+			<p>
+				Hi there <i>italic again</i>
+			</p>
+			
+			<div class="contSel2">
+				This is the final <i>italic</i>.
+			</div>
+		</div>
+		
+		<p class="main">
+		These are cool but can only be used in certain situations. <br />
+		Note that div is mostly used as a body code to seperate different styles via classes <br />
+		Note that when use the style tag it is code within css. Therefore comments should be changed to */ aaa */ as the normal one interferes with the code <br />
+		Now we shall move onto psuedo class selectors.
+		</p>
+		
+		<h1 class="psuedo"> psuedo class selectors </h1>
+		
+		<p class="psuedo">
+		here we can notice that when we hover over the text it changes color. This is a simple example on why we use psuedoText. <br />
+		this is commonly used in links.
+		
+		<h1> List properties </h1>
+		
+		<p class="main">
+		you may also change what an ordered list may display. Here is an example.
+		</p>
+		
+		<ol>
+			<li>First level item 1
+				<ol>
+					<li>Second level item 1.1</li>
+					<li>Second level item 1.2</li>
+				</ol>
+			</li>
+
+			<li>First level item 2
+				<ol>
+					<li>Second level item 2.1</li>
+					<li>Second level item 2.2</li>
+				</ol>
+			</li>
+		</ol>
+		
+		<p class="main"> 
+		or you may put images..... however i dont know how to specify a width and height yet.
+		</p>
+		
+		<h1> Special Text </h1>
+		<p class="main">
+		Span is very simiar to div, it is only used for styling purposes, not going to demonstrate.
+		</p>
+		
+		<h1> External CSS </h1>
+		<p class="main">
+		now this is cool, so the css we wrote up the top can be placed in an external file. Through this way we can download templates and form our way around it. Im not going to demponstrait this as its done the same way.
+		</p>
+		
+	</body>
+	
+
+
+</html>

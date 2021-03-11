@@ -1,0 +1,154 @@
+<!--JSON, Objects and Stringify -->
+
+<html>
+	<head>
+		<title>JSON</title>
+		
+			<style>
+	
+	body{
+	background-color:lightgrey;
+	padding:50px;
+	
+	}
+	
+	
+	h1{
+	background-color:white;
+	padding:50px;
+	border-style:solid;
+	border-width:3px;
+	border-color:black;
+	}
+	
+	h3{
+	background-color:grey;
+	padding:20px;
+	}
+	
+	p{
+	padding:10px;
+	}
+	
+	</style>
+	
+		<script>
+			
+			function constructObject(){
+				//get fullname
+				var fullnameInput = document.getElementById("fullnameInput").value;
+				//get student number
+				var studentNumberInput = document.getElementById("studentNumberInput").value;
+				//get age
+				var ageInput = document.getElementById("ageInput").value;
+				//get major
+				var major;
+				var majorInput = document.getElementsByName("majorInput");
+				
+				for(i = 0; i < majorInput.length; i++) { 
+					if(majorInput[i].checked){
+						major = majorInput[i].value;
+					}
+				}
+				//construct object
+				var person = {
+					name: fullnameInput,
+					sn: studentNumberInput,
+					age: ageInput,
+					major: major
+				};
+				
+				return person;
+			}
+				
+			function showJSON(){
+				//get student object
+				var object = constructObject();
+				
+				//show JSON version
+				var JSONobject = JSON.stringify(object,null,2);
+				var area = document.getElementById("JSONText")
+				area.value = JSONobject;
+				
+			}
+			
+			function showObject(){
+				//getting text area information
+				var textValue = document.getElementById("objectText").value;
+				
+				//parsing
+				var object = JSON.parse(textValue);
+				
+				document.getElementById("displayObject").innerHTML = ("Name: " + object.name + " Student Number: " + object.sn + " Age: " + object.age + " Major: " + object.major);
+			}
+				
+			
+		</script>
+		
+	</head>
+	
+	<body>
+	
+		<h1>
+			JSON, Objects and Stringify examples
+		</h1>
+		
+		<p>
+		JSON or JavaScript Object Notation is the most used way to store and transport data. This use of objects and its syntax makes it pretty self describing.
+		There is also the method Stringify that converts objects to JSON and JSON to objects! meaning you don't have to write much. Each attribute/element must be within brackets
+		. Each object will be encapsulated in {} while arrays are encapsulated in []
+		<br/><br/>
+		Note that you may also use a JSON editor online that will activly let you know when you make a syntax error.
+		<br/><br/>
+		<h3>Try the following JSON text to convert to data!</h3>
+		</p>
+		
+		<br/>
+		
+		<table>
+			<tr>
+				<td>FullName:</td>
+				<td><input type="text" id="fullnameInput" /><td>
+			</tr>
+		
+			<tr>
+				<td>SN:</td>
+				<td><input type="text" id="studentNumberInput"/></td>
+			</tr>
+		
+			<tr>
+				<td>Age:</td>
+				<td><input type="text" id="ageInput"/></td>
+			</tr>
+			
+			<tr>
+				<td>Major:</td>
+				<td>
+					<input type="radio" name="majorInput" value="cs"/>Computer Science
+					<input type="radio" name="majorInput"  value="IT"/>IT
+					<input type="radio" name="majorInput"  value="other" checked="checked"/>Other
+				</td>
+			</tr>
+		
+		<table>
+		
+		<br/>
+		<br/>
+		
+		<br/><br/>
+		<button Onclick="showJSON();" >Show JSON</button>
+		<br/>
+		<textarea rows="7" cols="50" id="JSONText"></textarea>
+		
+		<br/></br>
+		Please enter the JSON text in order to display an object
+		<br/>
+		<button Onclick="showObject();" >Show Object</button>
+		</br>
+		<textarea rows="7" cols="50" id="objectText" >Please enter JSON text here</textarea>
+		</br>
+		<div id="displayObject"></div>
+		
+	</body>
+	
+</html>

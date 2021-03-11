@@ -1,0 +1,74 @@
+<html>
+
+    <head>
+        <title>Question 7</title>
+    </head>
+
+    <script>
+
+        var studentRecordJSON = 
+        {
+            "firstName": "Pedro",
+            "lastName": "Oste",
+            "studentNumber": "1234",
+
+            "subjectList":[
+                {
+                    "code": "MATH101",
+                    "credits": "4",
+                    "mark": "85",
+                    "grade": "A"
+                },
+                {
+                    "code": "ECON101",
+                    "credits": "5",
+                    "mark": "70",
+                    "grade": "B"
+                },
+                {
+                    "code": "CS100",
+                    "credits": "5",
+                    "mark": "80",
+                    "grade": "A"
+                },
+                {
+                    "code": "LAW121",
+                    "credits": "6",
+                    "mark": "75",
+                    "grade": "B"
+                }
+            ]
+        }
+
+        function readJSON(){
+
+            //constructing object from json
+            //note that js will automatically turn the JSON Into an object
+            //var object = JSON.parse(studentRecordJSON);
+            var object = studentRecordJSON;
+
+            var html = "<table border='1px'><tr><td colspan='4'>" + object.firstName + ", " + object.lastName + ". Student ID: " + object.studentNumber + "</td></tr>";
+
+            html += "<tr><td>Subject Code</td><td>Credits</td><td>Mark</td><td>Grade</td></tr>";
+            
+            for (var i = 0; i < object.subjectList.length; i++){
+                
+                html+= "<tr><td>" + object.subjectList[i].code + "</td><td>" + object.subjectList[i].credits + "</td><td>" + object.subjectList[i].mark + "</td><td>" + object.subjectList[i].grade + "</td></tr>";
+            }
+
+            html += "</table>";
+
+            document.getElementById("JSONMessage").innerHTML = html;
+        }
+
+    </script>
+
+    <body>
+
+        <button onclick="readJSON()">Read JSON</button>
+        <br/>
+        <div id="JSONMessage"></div>
+
+    </body>
+
+</html>

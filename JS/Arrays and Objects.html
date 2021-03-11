@@ -1,0 +1,86 @@
+<!-- Arrays and Objects within javaScript -->
+<html>
+	<head>
+		<title>Arrays and Objects</title>
+			
+		<style>
+	
+			body{
+			background-color:lightgrey;
+			padding:50px;
+			
+			}
+			
+			
+			h1{
+			background-color:white;
+			padding:50px;
+			border-style:solid;
+			border-width:3px;
+			border-color:black;
+			}
+			
+			h3{
+			background-color:grey;
+			padding:20px;
+			}
+			
+			p{
+			padding:10px;
+			}
+	
+	</style>
+
+		<script>
+			
+			function showArray(){
+				//defining an array
+				var subjectList = ["ISIT206", "MATH121", "CSCI301"];
+				
+				//replacing a item, note that the index starts at 0
+				subjectList[1] = "LOGIC101";
+				
+				//note that we can also put a item into an empty spot, this will create holes in the array
+				subjectList[6] = "LAW201";
+				
+				//printing out contents
+				for(var i = 0; i <subjectList.length; i++){
+					alert(subjectList[i]);
+				}
+				
+			}
+			
+			function showObject(){
+				//defining an object
+				var person = {
+					name: "John",
+					dob: new Date("1996-01-20"),
+					year: 2
+				};
+				
+				//changing an element, we may also add extra (however this will be restricted by JSON
+				person.firstName = "Pedro";
+				person.lastName = "Oste";
+				
+				//printing out the object
+				alert("name: " + person.firstName + " " + person.lastName + " DOB: " + person.dob + " Year: " + person.year );
+			}
+			
+		</script>
+			
+		
+		
+	</head>
+	
+	<body>
+		<p>
+			Here we will show a basic example of arrays and objects within java Script. These seem to be pretty close to other languages with a few changes in the syntax
+		</p>
+		
+		</br>
+		</br>
+		
+		<button onClick="showArray();">Show array Contents</button>
+		<button onClick="showObject();">Show Object Contents</button>
+	
+	</body>
